@@ -15,6 +15,14 @@ export const OptionsHeader = styled.span`
   font-size: 30px;
   font-weight: bold;
   padding-right: 30px;
+
+  /* @media (min-width:320px) {
+    display: none;
+  }
+
+  @media (min-width:600px) {
+    display: block;
+  } */
 `;
 
 export const DarkModeOptions = styled.div`

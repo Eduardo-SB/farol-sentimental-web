@@ -85,7 +85,7 @@ export const Header: React.FC<PropsComponent> = ({toggleTheme}) => {
         <SwitchDarkMode checked={title === 'dark'} onChange={toggleTheme} name="switchDarkMode" />
         <Brightness2 fontSize="small" />
     </DarkModeOptions>
-    <div>
+    <div style={{ display: 'flex'}}>
       <OptionsHeader>
         <Link to="/contato">Contato</Link>
       </OptionsHeader>

@@ -7,7 +7,7 @@ import SearchIcon from '@material-ui/icons/Search';
 const useStyles = makeStyles({
   root: {
     color: '#12D8FA',
-    width: '50vw',
+    width: '70vw',
     textAlign: 'center',
     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
       borderColor: '#12D8FA'

@@ -12,13 +12,15 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import studentLuis from '../../img/students/luis.jpg'
+import studentLuis from '../../img/students/luis.jpg';
+import studentEduardo from '../../img/students/eduardo.jpeg';
+import studentCleide from '../../img/students/cleide.jpg';
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
     minWidth: 300,
-    marginBottom: '40px',
+    boxShadow: '2px 5px 16px 0px #333'
   },
 });
 
@@ -36,27 +38,27 @@ export const Contacts: React.FC = () => {
   const students = [];
 
   students.push({
-    img: 'image',
+    img: studentEduardo,
     name: 'Eduardo da Silva Brandão',
-    about: 'about',
-    linkedin: 'linkedin',
-    github: 'github'
+    about: 'Apaixonado por tecnologia',
+    linkedin: 'https://www.linkedin.com/in/eduardo-sb/',
+    github: 'https://github.com/Eduardo-SB'
   })
 
   students.push({
     img: studentLuis,
     name: 'Luis Siczkoriz',
-    about: 'about',
-    linkedin: 'linkedin',
-    github: 'github'
+    about: 'Estou aberto a qualquer tipo de aprendizado.',
+    linkedin: 'https://www.linkedin.com/in/luis-siczkoriz',
+    github: 'https://github.com/LuisSiczkoriz'
   })
   
   students.push({
-    img: 'image',
+    img: studentCleide,
     name: 'Cleide de Paula',
-    about: 'Machine learn',
-    linkedin: 'www.linkedin.com/in/cleide-de-paula/',
-    github: 'github.com/clepaula/'
+    about: 'Analista de dados em formação, comunicadora, leitora voraz e corredora de rua nas horas vagas',
+    linkedin: 'https://www.linkedin.com/in/cleide-de-paula/',
+    github: 'https://github.com/clepaula/'
   })
 
 
@@ -84,12 +86,10 @@ export const Contacts: React.FC = () => {
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">
-            {/* {student.linkedin} */}
-            Linkedin
+            <a rel="noopener noreferrer" href={student.linkedin} target="_blank" style={{color: 'black', fontWeight: 'bold'}}>Linkedin</a>  
           </Button>
           <Button size="small" color="primary">
-            {/* {student.github} */}
-            Github
+            <a rel="noopener noreferrer" href={student.github} target="_blank" style={{color: 'black',  fontWeight: 'bold'}}>Github</a> 
           </Button>
         </CardActions>
       </Card>
