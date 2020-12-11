@@ -21,7 +21,7 @@ export const HashTag = styled.span`
 export const ContainerResults = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin: 20px 20vw;
 `;
 
@@ -36,6 +36,6 @@ export const InfoResults = styled.div`
   font-size: 30px;
   font-weight: bold;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin: 0 20vw;
 `;
