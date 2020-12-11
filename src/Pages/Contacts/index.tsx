@@ -1,10 +1,9 @@
 import React from 'react';
 
-import {ContainerContact} from './style';
+import {ContainerContact, ChangeCard} from './style';
 import {BackHome} from '../components/BackHome';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -12,9 +11,18 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+// modal
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
 import studentLuis from '../../img/students/luis.jpg';
 import studentEduardo from '../../img/students/eduardo.jpeg';
 import studentCleide from '../../img/students/cleide.jpg';
+import studentDenia from '../../img/students/denia.jpeg';
+import studentGuilherme from '../../img/students/guilherme.jpeg';
 
 const useStyles = makeStyles({
   root: {
@@ -60,13 +68,59 @@ export const Contacts: React.FC = () => {
     linkedin: 'https://www.linkedin.com/in/cleide-de-paula/',
     github: 'https://github.com/clepaula/'
   })
+  
+  students.push({
+    img: studentDenia,
+    name: 'Denia ZangheliniDenia Zanghelini',
+    about: '#techie #digitalshaper #datascientist #fightingbiasedcode',
+    linkedin: '',
+    github: 'https://github.com/DeniaZanghe'
+  })
+  
+  students.push({
+    img: studentGuilherme,
+    name: 'Guilherme Lopes Martins Revolta',
+    about: 'Bacharelado em Ciência da Computação.Desenvolvedor Web FullStack utilizando ferramentas atuais como React.JS, Elixir e seu framework Phoenix.',
+    linkedin: 'https://www.linkedin.com/in/guirevolta/',
+    github: 'https://github.com/revoltaxz'
+  })
 
+  const [open, setOpen] = React.useState(false);
+  const [currentName, setCurrentName] = React.useState('');
+  const [easterEgg, setEasterEgg] = React.useState(0);
+
+  const handleClose = () => {
+    setOpen(false);
+    setEasterEgg(0);
+  };
 
   return (<>
+    <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">Easter Egg detected</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              {`Oi eu sou o ${currentName}!`}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            {/* <Button onClick={handleClose} color="primary">
+              Fechar
+            </Button> */}
+            <Button onClick={handleClose} color="primary" autoFocus>
+              Eu sou demais
+            </Button>
+          </DialogActions>
+        </Dialog>
+        
     <BackHome />
     <ContainerContact>
       {students.map((student: Students, index) => (
-        <Card className={classes.root} key={index}>
+        <ChangeCard className={classes.root} key={index}>
         <CardActionArea>
           <CardMedia
             component="img"
@@ -74,6 +128,14 @@ export const Contacts: React.FC = () => {
             height="140"
             image={student.img}
             title="Contemplative Reptile"
+            onClick={() => {
+              if(easterEgg === 5){
+                setCurrentName(student.name);
+                setOpen(true);
+              }else{
+                setEasterEgg(easterEgg + 1);
+              }
+            }}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
@@ -92,7 +154,7 @@ export const Contacts: React.FC = () => {
             <a rel="noopener noreferrer" href={student.github} target="_blank" style={{color: 'black',  fontWeight: 'bold'}}>Github</a> 
           </Button>
         </CardActions>
-      </Card>
+      </ChangeCard>
       ))}
     </ContainerContact>
   </>);

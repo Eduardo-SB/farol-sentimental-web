@@ -3,6 +3,7 @@ import { ContainerHomeTitle, TitleHome, LogoHeader, ContainerHomeInput }  from '
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from '@material-ui/icons/Search';
+import {useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -25,6 +26,11 @@ export const Home: React.FC = () => {
   const [search, setSearch] = useState("");
   const [colorSearch, setColorSearch] = useState("#B9B9B9")
   const classes = useStyles();
+  const history = useHistory();
+
+  const handleSubmit = (hashtag: string) => {
+    history.push(`/resultado/${hashtag}`);
+  }
 
   return (<>
     <ContainerHomeTitle>
@@ -44,12 +50,12 @@ export const Home: React.FC = () => {
           search.length === 0 ? setColorSearch("#B9B9B9") : setColorSearch("#12D8FA")
         }}
         onKeyDown={(e: any) =>{
-          if(e.keyCode === 13)  alert('enter')
+          if(e.keyCode === 13)  handleSubmit(search)
         }}
         className={classes.root}
         InputProps={{
           className: classes.root,
-          endAdornment: <SearchIcon  onClick={() => alert('funcionou')} style={{cursor: 'pointer', color: colorSearch}}/>,
+          endAdornment: <SearchIcon  onClick={() => handleSubmit(search)} style={{cursor: 'pointer', color: colorSearch}}/>,
         }}
       />
     </ContainerHomeInput>

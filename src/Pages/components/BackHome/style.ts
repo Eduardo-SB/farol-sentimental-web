@@ -4,8 +4,15 @@ import { ReactComponent as Logo } from '../../../img/logoHome.svg';
 export const ContainerBackHome = styled.div`
   height: 10vh;
   width: 100vw;
-  display: flex;
   align-items: center;
+
+  @media (min-width:320px) {
+    display: none;
+  }
+
+  @media (min-width:600px) {
+    display: flex;
+  }
 `;
 
 export const TitleBack = styled.div`
